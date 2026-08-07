@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TekThink Research Labs — AI Research & Platform Development | Andhra Pradesh</title>
+  <meta name="description" content="TekThink Research Labs Pvt Ltd is a DPIIT-recognised AI research company based in Andhra Pradesh, building domain intelligence frameworks for Real Estate & Infrastructure. ProjectIQ EOS powered by iQube™." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --indigo:#2D1B69; --indigo-dark:#1A0F3E; --indigo-mid:#4C3A9E; --indigo-light:#EEF0FF;
+      --emerald:#059669; --emerald-dark:#065F46; --emerald-light:#D1FAE5;
+      --slate:#334155; --slate-light:#F1F5F9; --slate-mid:#64748B;
+      --blue:#3B82F6; --blue-light:#EFF6FF;
+      --white:#FFFFFF; --off-white:#F0F4FF;
+      --text-1:#0F172A; --text-2:#475569; --text-3:#94A3B8;
+      --border:#CBD5E1; --border-soft:#E2E8F0;
+      --gold:#D97706; --gold-light:#FEF3C7;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Source Serif 4',Georgia,serif; background:var(--white); color:var(--text-1); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    .wrap { max-width:1100px; margin:0 auto; padding:0 5vw; }
+    section { padding:88px 0; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+    .sans { font-family:'Inter',sans-serif; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--emerald); }
+    .eyebrow::before { content:''; width:20px; height:1.5px; background:var(--emerald); flex-shrink:0; }
+    .h1 { font-family:'Inter',sans-serif; font-size:clamp(2rem,4vw,3.4rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; color:var(--text-1); }
+    .h2 { font-family:'Inter',sans-serif; font-size:clamp(1.7rem,2.8vw,2.4rem); font-weight:700; line-height:1.15; letter-spacing:-0.015em; color:var(--text-1); }
+    .h3 { font-family:'Inter',sans-serif; font-size:1.1rem; font-weight:600; color:var(--text-1); }
+    .lead { font-size:1.1rem; line-height:1.8; color:var(--text-2); font-weight:300; }
+    .body-sm { font-size:14px; line-height:1.7; color:var(--text-2); }
+    .btn { display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; padding:11px 24px; border-radius:6px; text-decoration:none; border:none; cursor:pointer; transition:all 0.2s; }
+    .btn:hover { transform:translateY(-1px); }
+    .btn-indigo { background:var(--indigo); color:var(--white); }
+    .btn-indigo:hover { background:var(--indigo-dark); box-shadow:0 6px 20px rgba(45,27,105,0.3); }
+    .btn-outline { background:transparent; color:var(--indigo); border:1.5px solid var(--indigo); }
+    .btn-outline:hover { background:var(--indigo); color:var(--white); }
+    .btn-white { background:var(--white); color:var(--indigo); }
+    .btn-white:hover { background:var(--indigo-light); }
+    .btn-outline-white { background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,0.5); }
+    .btn-outline-white:hover { background:rgba(255,255,255,0.1); border-color:var(--white); }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border-soft); transition:box-shadow 0.3s; }
+    nav.scrolled { box-shadow:0 1px 16px rgba(15,23,42,0.08); }
+    .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:44px; width:auto; display:block; }
+    .nav-brand-text { display:flex; flex-direction:column; }
+    .nav-brand-name { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:var(--indigo); line-height:1.2; }
+    .nav-brand-sub { font-family:'JetBrains Mono',monospace; font-size:9px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--emerald); }
+    .nav-links { display:flex; align-items:center; gap:1.75rem; }
+    .nav-links a { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; color:var(--text-2); text-decoration:none; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--indigo); }
+    .nav-cta { font-family:'Inter',sans-serif; font-size:13px; font-weight:600; padding:8px 18px; background:var(--indigo); color:var(--white)!important; border-radius:6px; text-decoration:none; transition:background 0.2s; }
+    .nav-cta:hover { background:var(--indigo-dark)!important; }
+    .nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .nav-hamburger span { display:block; width:22px; height:2px; background:var(--text-1); border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; top:72px; left:0; right:0; z-index:199; background:var(--white); border-bottom:1px solid var(--border); padding:1.5rem 5vw 2rem; flex-direction:column; gap:1.25rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { font-family:'Inter',sans-serif; font-size:15px; font-weight:500; color:var(--text-2); text-decoration:none; }
+
+    /* HERO */
+    .hero { padding-top:72px; background:linear-gradient(135deg,var(--indigo-dark) 0%,var(--indigo) 50%,#1E3A5F 100%); min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent,var(--white)); }
+    .hero-inner { position:relative; z-index:1; padding:80px 5vw; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:center; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:5px 12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:1.75rem; }
+    .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--emerald); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    .hero-title { color:var(--white); margin-bottom:1.5rem; }
+    .hero-title .accent { color:#93C5FD; }
+    .hero-desc { color:rgba(255,255,255,0.7); margin-bottom:2rem; font-size:1.05rem; line-height:1.8; max-width:480px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .hero-credentials { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .hero-cred { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:0.875rem 1rem; }
+    .hc-label { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px; }
+    .hc-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:var(--white); }
+
+    /* Hero visual */
+    .hero-visual { display:flex; flex-direction:column; gap:12px; }
+    .hv-panel { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.375rem 1.5rem; backdrop-filter:blur(8px); }
+    .hv-panel-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+    .hv-label { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+    .hv-status { display:inline-flex; align-items:center; gap:5px; font-family:'Inter',sans-serif; font-size:10.5px; font-weight:500; padding:3px 9px; border-radius:4px; background:rgba(5,150,105,0.2); color:#6EE7B7; border:1px solid rgba(5,150,105,0.3); }
+    .hv-status-dot { width:5px; height:5px; border-radius:50%; background:#6EE7B7; animation:pulse 2s infinite; }
+    .hv-panel-title { font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; color:var(--white); margin-bottom:1rem; }
+    .hv-framework { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:1rem; }
+    .hv-axis { border-radius:6px; padding:0.625rem 0.75rem; border:1px solid rgba(255,255,255,0.1); }
+    .hv-axis-1 { background:rgba(59,130,246,0.15); }
+    .hv-axis-2 { background:rgba(5,150,105,0.15); }
+    .hv-axis-3 { background:rgba(217,119,6,0.15); }
+    .hv-axis-4 { background:rgba(139,92,246,0.15); }
+    .hv-axis-label { font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.45); margin-bottom:3px; }
+    .hv-axis-val { font-family:'Inter',sans-serif; font-size:11.5px; font-weight:500; color:rgba(255,255,255,0.8); }
+    .hv-computed { background:rgba(5,150,105,0.1); border:1px solid rgba(5,150,105,0.25); border-radius:6px; padding:0.625rem 0.75rem; font-family:'JetBrains Mono',monospace; font-size:11px; color:#6EE7B7; line-height:1.6; }
+
+    /* CREDENTIALS STRIP */
+    .cred-strip { background:var(--slate); padding:16px 0; }
+    .cred-strip-inner { max-width:1100px; margin:0 auto; padding:0 5vw; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .cs-item { display:flex; align-items:center; gap:9px; }
+    .cs-icon { font-size:16px; }
+    .cs-text { font-family:'Inter',sans-serif; font-size:12px; font-weight:500; color:rgba(255,255,255,0.65); }
+    .cs-text strong { color:var(--white); }
+    .cs-div { width:1px; height:20px; background:rgba(255,255,255,0.15); }
+
+    /* RESEARCH FOCUS */
+    #research { background:var(--white); border-top:1px solid var(--border-soft); }
+    .research-header { max-width:680px; margin-bottom:3.5rem; }
+    .research-header .eyebrow { margin-bottom:1rem; }
+    .research-header .h2 { margin-bottom:1rem; margin-top:1rem; }
+    .research-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:3rem; }
+    .research-card { background:var(--off-white); border:1px solid var(--border-soft); border-radius:8px; padding:1.75rem; transition:border-color 0.2s,box-shadow 0.2s; }
+    .research-card:hover { border-color:var(--indigo-mid); box-shadow:0 4px 20px rgba(45,27,105,0.08); }
+    .rc-icon { font-size:2rem; margin-bottom:1rem; }
+    .rc-title { font-family:'Inter',sans-serif; font-size:15px; font-weight:700; color:var(--text-1); margin-bottom:0.5rem; }
+    .rc-body { font-size:13.5px; color:var(--text-2); line-height:1.7; font-family:'Source Serif 4',serif; }
+
+    /* PROJECTIQ */
+    #projectiq { background:var(--off-white); border-top:1px solid var(--border-soft); }
+    .piq-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .piq-left .eyebrow { margin-bottom:1rem; }
+    .piq-left .h2 { margin-bottom:1.25rem; margin-top:1rem; }
+    .piq-left .lead { margin-bottom:1.5rem; }
+    .piq-framework { background:var(--indigo-dark); border-radius:10px; padding:1.5rem; margin-bottom:1.75rem; }
+    .piq-framework-title { font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
+    .piq-axes { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .piq-axis { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.75rem; }
+    .piq-axis-num { font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(255,255,255,0.35); margin-bottom:3px; }
+    .piq-axis-name { font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:var(--white); margin-bottom:2px; }
+    .piq-axis-items { font-size:11px; color:rgba(255,255,255,0.45); line-height:1.5; }
+    .piq-features { list-style:none; margin-bottom:2rem; }
+    .piq-features li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text-2); padding:0.5rem 0; border-bottom:1px solid var(--border-soft); line-height:1.6; font-family:'Source Serif 4',serif; }
+    .piq-features li:last-child { border-bottom:none; }
+    .piq-features li::before { content:'→'; color:var(--indigo-mid); font-family:'Inter',sans-serif; font-weight:700; flex-shrink:0; }
+    .piq-right { display:flex; flex-direction:column; gap:14px; }
+    .piq-stat { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:1.25rem; }
+    .piq-stat.accent { background:var(--indigo); border-color:var(--indigo); }
+    .piq-stat-val { font-family:'Inter',sans-serif; font-size:1.8rem; font-weight:800; color:var(--text-1); line-height:1; }
+    .piq-stat.accent .piq-stat-val { color:var(--white); }
+    .piq-stat-val .unit { font-size:1rem; color:var(--emerald); }
+    .piq-stat.accent .piq-stat-val .unit { color:#6EE7B7; }
+    .piq-stat-label { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; color:var(--text-1); margin-top:0.375rem; }
+    .piq-stat.accent .piq-stat-label { color:rgba(255,255,255,0.7); }
+    .piq-stat-note { font-size:12px; color:var(--text-3); margin-top:3px; line-height:1.5; }
+    .piq-stat.accent .piq-stat-note { color:rgba(255,255,255,0.4); }
+    .piq-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+    /* IP SECTION */
+    #ip { background:var(--white); border-top:1px solid var(--border-soft); }
+    .ip-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .ip-left .eyebrow { margin-bottom:1rem; }
+    .ip-left .h2 { margin-bottom:1.25rem; margin-top:1rem; }
+    .ip-layers { display:flex; flex-direction:column; gap:10px; margin-top:1.75rem; }
+    .ip-layer { display:flex; gap:14px; align-items:flex-start; padding:1rem 1.25rem; border-radius:8px; border:1px solid var(--border-soft); background:var(--off-white); }
+    .ip-layer-icon { font-size:20px; flex-shrink:0; }
+    .ip-layer-title { font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; color:var(--text-1); margin-bottom:3px; }
+    .ip-layer-body { font-size:13px; color:var(--text-2); line-height:1.6; }
+    .ip-right { background:var(--indigo-dark); border-radius:10px; padding:2.5rem; }
+    .ip-right-title { font-family:'Inter',sans-serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:0.375rem; }
+    .ip-right-sub { font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:1.75rem; font-family:'JetBrains Mono',monospace; }
+    .ip-item { display:flex; gap:14px; align-items:flex-start; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .ip-item:last-child { border-bottom:none; padding-bottom:0; }
+    .ip-item-num { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--emerald); min-width:24px; margin-top:2px; }
+    .ip-item-title { font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; color:var(--white); margin-bottom:3px; }
+    .ip-item-body { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+    /* ABOUT STRIP */
+    #about { background:var(--slate-light); border-top:1px solid var(--border-soft); padding:64px 0; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:20px; margin-bottom:2.5rem; }
+    .about-card { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:1.25rem; }
+    .ac-val { font-family:'Inter',sans-serif; font-size:1.4rem; font-weight:800; color:var(--indigo); line-height:1; }
+    .ac-label { font-family:'Inter',sans-serif; font-size:12.5px; font-weight:500; color:var(--text-1); margin-top:0.375rem; }
+    .ac-note { font-size:11.5px; color:var(--text-3); margin-top:3px; line-height:1.5; font-family:'Inter',sans-serif; }
+    .about-body { max-width:760px; }
+    .about-body .h3 { margin-bottom:1rem; }
+    .about-body p { font-size:15px; line-height:1.8; color:var(--text-2); margin-bottom:1rem; }
+
+    /* GRANTS */
+    #grants { background:var(--white); border-top:1px solid var(--border-soft); }
+    .grants-header { text-align:center; margin-bottom:3rem; }
+    .grants-header .eyebrow { margin-bottom:1rem; }
+    .grants-header .h2 { margin-bottom:1rem; margin-top:1rem; }
+    .grants-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .grant-card { border:1px solid var(--border); border-radius:8px; padding:1.5rem; transition:border-color 0.2s,box-shadow 0.2s; }
+    .grant-card:hover { border-color:var(--indigo-mid); box-shadow:0 4px 16px rgba(45,27,105,0.08); }
+    .gc-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:0.875rem; }
+    .gc-badge.central { background:var(--blue-light); color:var(--blue); }
+    .gc-badge.state { background:var(--emerald-light); color:var(--emerald-dark); }
+    .gc-badge.institutional { background:var(--gold-light); color:var(--gold); }
+    .gc-title { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:var(--text-1); margin-bottom:0.375rem; }
+    .gc-body { font-size:13px; color:var(--text-2); line-height:1.65; }
+
+    /* CTA */
+    #cta { background:linear-gradient(135deg,var(--indigo-dark) 0%,var(--indigo) 100%); padding:80px 0; }
+    .cta-inner { display:flex; align-items:center; justify-content:space-between; gap:2.5rem; flex-wrap:wrap; }
+    .cta-title { font-family:'Inter',sans-serif; font-size:clamp(1.7rem,3vw,2.4rem); font-weight:800; color:var(--white); line-height:1.15; letter-spacing:-0.02em; margin-bottom:0.75rem; }
+    .cta-sub { font-size:1rem; color:rgba(255,255,255,0.7); line-height:1.7; max-width:420px; }
+    .cta-actions { display:flex; gap:12px; flex-wrap:wrap; flex-shrink:0; }
+
+    /* FOOTER */
+    footer { background:#0F172A; padding:56px 0 28px; }
+    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+    .footer-brand { display:flex; align-items:center; gap:10px; margin-bottom:1rem; }
+    .footer-logo { height:40px; width:auto; }
+    .footer-brand-name { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:var(--white); }
+    .footer-brand-sub { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--emerald); }
+    .footer-desc { font-size:13px; color:rgba(255,255,255,0.4); line-height:1.7; max-width:260px; margin-bottom:1rem; font-family:'Inter',sans-serif; }
+    .footer-entity { font-size:11.5px; color:rgba(255,255,255,0.25); line-height:1.7; font-family:'JetBrains Mono',monospace; }
+    .footer-col-title { font-family:'Inter',sans-serif; font-size:12px; font-weight:700; color:var(--white); margin-bottom:1rem; letter-spacing:0.02em; text-transform:uppercase; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .footer-links li a { font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.2s; }
+    .footer-links li a:hover { color:var(--emerald); }
+    .footer-links li span { font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.4); }
+    .footer-dpiit { margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); }
+    .footer-dpiit-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:4px; }
+    .footer-dpiit-val { font-family:'JetBrains Mono',monospace; font-size:11.5px; color:rgba(255,255,255,0.45); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
+    .footer-copy { font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.25); }
+    .footer-ip { font-family:'Inter',sans-serif; font-size:11px; color:rgba(255,255,255,0.18); font-style:italic; max-width:500px; line-height:1.6; text-align:right; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-d1 { transition-delay:0.1s; } .reveal-d2 { transition-delay:0.2s; }
+
+    /* RESPONSIVE */
+    @media (max-width:960px) {
+      .hero-inner { grid-template-columns:1fr; gap:3rem; padding-bottom:3rem; }
+      .hero-visual { display:none; }
+      .nav-links { display:none; }
+      .nav-hamburger { display:flex; }
+      .research-grid { grid-template-columns:1fr 1fr; }
+      .piq-grid { grid-template-columns:1fr; gap:3rem; }
+      .ip-grid { grid-template-columns:1fr; gap:3rem; }
+      .about-grid { grid-template-columns:1fr 1fr; }
+      .grants-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+      .cta-inner { flex-direction:column; }
+      .cred-strip-inner { justify-content:center; }
+      .cs-div { display:none; }
+    }
+    @media (max-width:600px) {
+      .research-grid { grid-template-columns:1fr; }
+      .grants-grid { grid-template-columns:1fr; }
+      .about-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .piq-stat-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="tt02-nav">
+  <a href="/" class="nav-brand">
+    <img src="data:image/jpeg;base64,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" alt="TekThink Research Labs" class="nav-logo-img" />
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">TekThink Research Labs</span>
+      <span class="nav-brand-sub">Intelligence · Insight · Innovation</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#research">Research</a>
+    <a href="#projectiq">ProjectIQ EOS</a>
+    <a href="#ip">IP &amp; Innovation</a>
+    <a href="#about">About</a>
+    <a href="#grants">Grants</a>
+  </div>
+  <a href="mailto:admin@tekthinkresearchlabs.in?subject=Research Briefing Request" class="nav-cta">Request Briefing →</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#research" onclick="closeMenu()">Research</a>
+  <a href="#projectiq" onclick="closeMenu()">ProjectIQ EOS</a>
+  <a href="#ip" onclick="closeMenu()">IP &amp; Innovation</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#grants" onclick="closeMenu()">Grants &amp; Partnerships</a>
+  <a href="mailto:admin@tekthinkresearchlabs.in?subject=Research Briefing Request" class="nav-cta" style="text-align:center;">Request Briefing →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>DPIIT Recognised Deep Tech · Andhra Pradesh</div>
+      <h1 class="h1 hero-title">
+        AI Research &amp; Platform<br>Development for<br>
+        <span class="accent">Complex Domains.</span>
+      </h1>
+      <p class="hero-desc">TekThink Research Labs builds AI-native domain intelligence frameworks — anchored in proprietary theorems, validated through field research, and deployed as enterprise-grade platforms for high-stakes industries.</p>
+      <div class="hero-actions">
+        <a href="#projectiq" class="btn btn-white">Explore ProjectIQ EOS →</a>
+        <a href="mailto:admin@tekthinkresearchlabs.in?subject=Research Briefing Request" class="btn btn-outline-white">Request a Briefing</a>
+      </div>
+      <div class="hero-credentials">
+        <div class="hero-cred"><div class="hc-label">DPIIT Recognition</div><div class="hc-val">DIPP275667</div></div>
+        <div class="hero-cred"><div class="hc-label">Valid Until</div><div class="hc-val">29 Jul 2036</div></div>
+        <div class="hero-cred"><div class="hc-label">Incorporated</div><div class="hc-val">30 Jul 2026 · AP</div></div>
+        <div class="hero-cred"><div class="hc-label">CIN</div><div class="hc-val">U62013AP2026PTC127340</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hv-panel">
+        <div class="hv-panel-top">
+          <span class="hv-label">iQube™ Framework · Active</span>
+          <span class="hv-status"><span class="hv-status-dot"></span>MVP Validation</span>
+        </div>
+        <div class="hv-panel-title">4-Dimensional Decision Intelligence Engine</div>
+        <div class="hv-framework">
+          <div class="hv-axis hv-axis-1"><div class="hv-axis-label">Axis 1</div><div class="hv-axis-val">Parameters</div></div>
+          <div class="hv-axis hv-axis-2"><div class="hv-axis-label">Axis 2</div><div class="hv-axis-val">Dimensions</div></div>
+          <div class="hv-axis hv-axis-3"><div class="hv-axis-label">Axis 3</div><div class="hv-axis-val">Controls</div></div>
+          <div class="hv-axis hv-axis-4"><div class="hv-axis-label">Axis 4</div><div class="hv-axis-val">Lifecycle</div></div>
+        </div>
+        <div class="hv-computed">→ cross_dimensional_propagation: active<br>→ binary_input_computed: true<br>→ alert_engine: firing<br>→ rera_compliance: auto_assembled</div>
+      </div>
+      <div class="hv-panel">
+        <div class="hv-panel-top">
+          <span class="hv-label">ProjectIQ EOS · Intelligence Loop</span>
+          <span class="hv-status"><span class="hv-status-dot"></span>Running</span>
+        </div>
+        <div class="hv-framework">
+          <div class="hv-axis hv-axis-1"><div class="hv-axis-label">Step 1</div><div class="hv-axis-val">Capture</div></div>
+          <div class="hv-axis hv-axis-2"><div class="hv-axis-label">Step 2</div><div class="hv-axis-val">Compute</div></div>
+          <div class="hv-axis hv-axis-3"><div class="hv-axis-label">Step 3</div><div class="hv-axis-val">Connect</div></div>
+          <div class="hv-axis hv-axis-4"><div class="hv-axis-label">Step 4</div><div class="hv-axis-val">Alert → Advise → Learn</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS STRIP -->
+<div class="cred-strip">
+  <div class="cred-strip-inner">
+    <div class="cs-item"><span class="cs-icon">🏛️</span><span class="cs-text"><strong>DPIIT Recognised</strong> · DIPP275667 · Valid to Jul 2036</span></div>
+    <div class="cs-div"></div>
+    <div class="cs-item"><span class="cs-icon">📍</span><span class="cs-text"><strong>Andhra Pradesh</strong> · Andhra Pradesh · AP Startup Ecosystem</span></div>
+    <div class="cs-div"></div>
+    <div class="cs-item"><span class="cs-icon">🔬</span><span class="cs-text"><strong>Deep Tech</strong> · AI Research · Domain Intelligence</span></div>
+    <div class="cs-div"></div>
+    <div class="cs-item"><span class="cs-icon">🔒</span><span class="cs-text"><strong>Patent Pending</strong> · iQube™ Framework · Proprietary IP</span></div>
+  </div>
+</div>
+
+<!-- RESEARCH FOCUS -->
+<section id="research">
+  <div class="wrap">
+    <div class="research-header reveal">
+      <div class="eyebrow">Research Focus</div>
+      <h2 class="h2">Domain Intelligence Frameworks<br>for High-Stakes Industries.</h2>
+      <p class="lead" style="margin-top:1rem;">TekThink Research Labs develops AI-native intelligence frameworks that transform how complex organisations capture, compute, and act on operational data. Our research is grounded in formal theorems, validated through field deployment, and protected as proprietary IP.</p>
+    </div>
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <div class="rc-icon">🧮</div>
+        <div class="rc-title">Formal Framework Design</div>
+        <div class="rc-body">Every intelligence system we build is anchored in a formally structured, mathematically grounded framework — not heuristics or rules of thumb. Frameworks are domain-specific, patent-pending, and constitute the core IP of each platform.</div>
+      </div>
+      <div class="research-card reveal reveal-d1">
+        <div class="rc-icon">⚙️</div>
+        <div class="rc-title">Binary Input Architecture</div>
+        <div class="rc-body">Our research established that all meaningful field intelligence can be reduced to binary completion events. This produces manipulation-proof, audit-ready computed outputs — eliminating subjective scoring from enterprise decision systems.</div>
+      </div>
+      <div class="research-card reveal reveal-d2">
+        <div class="rc-icon">🔗</div>
+        <div class="rc-title">Cross-Dimensional Propagation</div>
+        <div class="rc-body">A single binary input event propagates automatically across all relevant dimensions — construction progress, financial impact, compliance status, and stakeholder communication — through our iQube™ causal reasoning engine.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="rc-icon">📊</div>
+        <div class="rc-title">Real Estate Execution Intelligence</div>
+        <div class="rc-body">Primary applied research domain. Developing the iQube™ framework for real estate and infrastructure execution — covering 303 standard sub-tasks across 4 project types, RERA compliance automation, and EVM computation from field data.</div>
+      </div>
+      <div class="research-card reveal reveal-d1">
+        <div class="rc-icon">🤖</div>
+        <div class="rc-title">Prescriptive AI Advisory</div>
+        <div class="rc-body">Research into AI systems that move beyond descriptive dashboards to prescriptive intelligence — systems that assign specific actions to named owners with predicted outcome ranges and confidence-bounded uncertainty quantification.</div>
+      </div>
+      <div class="research-card reveal reveal-d2">
+        <div class="rc-icon">📈</div>
+        <div class="rc-title">Continuous Learning Systems</div>
+        <div class="rc-body">Investigating back-testing and recalibration architectures that compound model accuracy with every deployment cycle — creating compounding intelligence advantages that cannot be replicated by later-entering competitors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTIQ EOS -->
+<section id="projectiq">
+  <div class="wrap">
+    <div class="piq-grid">
+      <div class="piq-left">
+        <div class="eyebrow reveal">Primary Platform</div>
+        <h2 class="h2 reveal">ProjectIQ EOS —<br>Execution Operating System<br>for Real Estate.</h2>
+        <p class="lead reveal" style="margin-top:1rem;">India's first AI-native Execution Operating System for real estate and infrastructure. ProjectIQ EOS operationalises the iQube™ Decision Intelligence framework as a deployable enterprise platform.</p>
+        <div class="piq-framework reveal">
+          <div class="piq-framework-title">iQube™ — 4-Dimensional Framework (Patent Pending)</div>
+          <div class="piq-axes">
+            <div class="piq-axis"><div class="piq-axis-num">AXIS 01</div><div class="piq-axis-name">Parameters</div><div class="piq-axis-items">Cost · Schedule · Scope · QA · Risk</div></div>
+            <div class="piq-axis"><div class="piq-axis-num">AXIS 02</div><div class="piq-axis-name">Dimensions</div><div class="piq-axis-items">Construction · Finance · Sales · CX</div></div>
+            <div class="piq-axis"><div class="piq-axis-num">AXIS 03</div><div class="piq-axis-name">Controls</div><div class="piq-axis-items">RERA · QA/QC · Procurement · HSE</div></div>
+            <div class="piq-axis"><div class="piq-axis-num">AXIS 04</div><div class="piq-axis-name">Lifecycle</div><div class="piq-axis-items">S0 Feasibility → S5 Asset &amp; FM Ops</div></div>
+          </div>
+        </div>
+        <ul class="piq-features reveal">
+          <li>4-dimensional iQube™ framework — cross-dimensional signal propagation in real time</li>
+          <li>303 standard sub-tasks across 4 project types — all weights validated to 100%</li>
+          <li>RERA quarterly reports auto-assembled — same data that drives EVM is filed with RERA</li>
+          <li>Real EVM (CPI + SPI) computed from binary site inputs — never entered manually</li>
+          <li>Buyer transparency portal — flat progress updated by engineers, visible to buyers</li>
+          <li>Non-disruptive integration above Tally, Salesforce, MS Project</li>
+        </ul>
+        <div class="reveal" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="mailto:admin@tekthinkresearchlabs.in?subject=ProjectIQ EOS Briefing Request" class="btn btn-indigo">Request EOS Briefing →</a>
+          <a href="mailto:admin@tekthinkresearchlabs.in?subject=Pilot Engagement Enquiry" class="btn btn-outline">Pilot Enquiry</a>
+        </div>
+      </div>
+      <div class="piq-right reveal">
+        <div class="piq-stat-grid">
+          <div class="piq-stat accent">
+            <div class="piq-stat-val">303</div>
+            <div class="piq-stat-label">Standard Sub-Tasks</div>
+            <div class="piq-stat-note">Across 4 project types, all pre-weighted for binary completion.</div>
+          </div>
+          <div class="piq-stat">
+            <div class="piq-stat-val">7</div>
+            <div class="piq-stat-label">Intelligence Loop Steps</div>
+            <div class="piq-stat-note">Capture → Compute → Connect → Alert → Advise → Automate → Learn.</div>
+          </div>
+          <div class="piq-stat">
+            <div class="piq-stat-val">4</div>
+            <div class="piq-stat-label">iQube™ Axes</div>
+            <div class="piq-stat-note">Parameters × Dimensions × Controls × Lifecycle.</div>
+          </div>
+          <div class="piq-stat">
+            <div class="piq-stat-val">2</div>
+            <div class="piq-stat-label">Live Portals</div>
+            <div class="piq-stat-note">Builder command centre + Buyer transparency portal.</div>
+          </div>
+        </div>
+        <div class="piq-stat" style="margin-top:14px;background:var(--emerald-light);border-color:rgba(5,150,105,0.2);">
+          <div style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:var(--emerald-dark);margin-bottom:0.5rem;">🔬 Development Status</div>
+          <div style="font-size:13px;color:var(--emerald-dark);line-height:1.65;opacity:0.85;">MVP in early validation · Prototype live on Vercel · RERA-native architecture validated · Pilot engagements open in Andhra Pradesh and Telangana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IP & INNOVATION -->
+<section id="ip">
+  <div class="wrap">
+    <div class="ip-grid">
+      <div class="ip-left">
+        <div class="eyebrow reveal">IP &amp; Innovation</div>
+        <h2 class="h2 reveal">Proprietary Frameworks.<br>Compounding Moat.</h2>
+        <p class="lead reveal" style="margin-top:1rem;">Every platform built by TekThink Research Labs is anchored in formally structured, proprietary IP — designed to create compounding competitive advantage with every deployment cycle.</p>
+        <div class="ip-layers reveal">
+          <div class="ip-layer"><div class="ip-layer-icon">📐</div><div><div class="ip-layer-title">iQube™ Decision Intelligence Framework</div><div class="ip-layer-body">4-dimensional causal reasoning engine for real estate execution. Patent application in progress. Covers Parameters × Dimensions × Controls × Lifecycle cross-propagation methodology.</div></div></div>
+          <div class="ip-layer"><div class="ip-layer-icon">⚙️</div><div><div class="ip-layer-title">Binary Input Computation Model</div><div class="ip-layer-body">Proprietary architecture that derives all scores, percentages, and intelligence outputs from binary field completion events — eliminating subjective entry and ensuring audit-proof outputs.</div></div></div>
+          <div class="ip-layer"><div class="ip-layer-icon">🔒</div><div><div class="ip-layer-title">Tiered IP Disclosure Architecture</div><div class="ip-layer-body">Four-layer disclosure model: Marketing (public) → Conceptual (public) → Outcome (public) → Technical (NDA only). Core reasoning algorithms are trade secrets never disclosed.</div></div></div>
+        </div>
+      </div>
+      <div class="ip-right reveal">
+        <div class="ip-right-title">IP Protection Principles</div>
+        <div class="ip-right-sub">// never_disclosed: core_algorithms</div>
+        <div class="ip-item"><div class="ip-item-num">01</div><div><div class="ip-item-title">Theorem-Anchored</div><div class="ip-item-body">Every framework is formally structured as a theorem — not a methodology or a best-practice guide. Theorems are mathematically grounded and independently verifiable.</div></div></div>
+        <div class="ip-item"><div class="ip-item-num">02</div><div><div class="ip-item-title">Patent Pending</div><div class="ip-item-body">iQube™ Decision Intelligence framework — patent application in progress. Covers the 4-dimensional architecture and cross-dimensional propagation model.</div></div></div>
+        <div class="ip-item"><div class="ip-item-num">03</div><div><div class="ip-item-title">Trade Secret Layer</div><div class="ip-item-body">Causal inference algorithms, parameter weighting models, and multi-agent workflow logic are trade secrets. Never disclosed in any commercial or research context.</div></div></div>
+        <div class="ip-item"><div class="ip-item-num">04</div><div><div class="ip-item-title">Compounding Advantage</div><div class="ip-item-body">Every deployment cycle back-tests and recalibrates the model. Accumulated field data cannot be replicated by later entrants — the moat compounds indefinitely.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="margin-bottom:1rem;">About TekThink Research Labs</div>
+    <div class="about-grid reveal">
+      <div class="about-card"><div class="ac-val">2026</div><div class="ac-label">Incorporated</div><div class="ac-note">30 Jul 2026 · Andhra Pradesh</div></div>
+      <div class="about-card"><div class="ac-val">AP</div><div class="ac-label">Registered State</div><div class="ac-note">Andhra Pradesh</div></div>
+      <div class="about-card"><div class="ac-val">2036</div><div class="ac-label">DPIIT Valid Until</div><div class="ac-note">DIPP275667 · 10-year recognition</div></div>
+      <div class="about-card"><div class="ac-val">Pre</div><div class="ac-label">Revenue Stage</div><div class="ac-note">MVP validation · Seeking grants</div></div>
+    </div>
+    <div class="about-body reveal">
+      <h3 class="h3">A dedicated AI research entity for domain intelligence.</h3>
+      <p>TekThink Research Labs Private Limited is a DPIIT-recognised deep tech company incorporated in Andhra Pradesh, focused on developing AI-native domain intelligence frameworks for complex, high-stakes industries.</p>
+      <p>Our primary research domain is Real Estate &amp; Infrastructure execution intelligence — where we are building and validating the iQube™ Decision Intelligence framework through field deployment of ProjectIQ EOS. Our methodology — formal theorem design, binary input architecture, and cross-dimensional intelligence propagation — is applicable across multiple high-complexity domains.</p>
+      <p>We are actively pursuing research partnerships, grant collaborations, and institutional engagement with government bodies and academic institutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRANTS -->
+<section id="grants">
+  <div class="wrap">
+    <div class="grants-header reveal">
+      <div class="eyebrow">Grants &amp; Partnerships</div>
+      <h2 class="h2">Institutional Engagement &amp; Funding.</h2>
+      <p class="lead" style="margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;">TekThink Research Labs is actively engaging with central government, state government, and institutional funding bodies relevant to our deep tech AI research mandate.</p>
+    </div>
+    <div class="grants-grid">
+      <div class="grant-card reveal"><div class="gc-badge central">Central Government</div><div class="gc-title">SISFS — Startup India Seed Fund</div><div class="gc-body">Pursuing seed funding under the Startup India Seed Fund Scheme for early-stage AI research and MVP validation of ProjectIQ EOS.</div></div>
+      <div class="grant-card reveal reveal-d1"><div class="gc-badge central">Central Government</div><div class="gc-title">MeitY — AI &amp; Deep Tech Grants</div><div class="gc-body">Engaging with Ministry of Electronics &amp; IT schemes supporting AI research, data intelligence platforms, and deep tech startup development.</div></div>
+
+      <div class="grant-card reveal"><div class="gc-badge state">Andhra Pradesh</div><div class="gc-title">AP Innovation Society</div><div class="gc-body">Engaging with AP state startup ecosystem schemes and AP Innovation Society programmes for deep tech companies registered in Andhra Pradesh.</div></div>
+      <div class="grant-card reveal reveal-d1"><div class="gc-badge state">Andhra Pradesh</div><div class="gc-title">AP Startup Ecosystem</div><div class="gc-body">Active participation in Andhra Pradesh startup ecosystem as a registered AP company — eligible for state-specific grants, subsidies, and infrastructure support.</div></div>
+      <div class="grant-card reveal reveal-d2"><div class="gc-badge institutional">Research</div><div class="gc-title">Academic &amp; Research Partnerships</div><div class="gc-body">Open to collaborating with IITs, NITs, and research institutions on AI methodology validation, domain intelligence framework research, and joint publications.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div>
+        <div class="cta-title">Engage with our research.</div>
+        <p class="cta-sub">Whether you are a grant body, institutional investor, research partner, or enterprise exploring our platforms — we welcome structured engagement. All interactions are confidential.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="mailto:admin@tekthinkresearchlabs.in?subject=Research Briefing Request" class="btn btn-white">Request a Research Briefing →</a>
+        <a href="mailto:admin@tekthinkresearchlabs.in?subject=Partnership Enquiry" class="btn btn-outline-white">Partnership Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="data:image/jpeg;base64,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" alt="TekThink Research Labs" class="footer-logo" />
+          <div>
+            <div class="footer-brand-name">TekThink Research Labs</div>
+            <div class="footer-brand-sub">Intelligence · Insight · Innovation</div>
+          </div>
+        </div>
+        <p class="footer-desc">AI research &amp; platform development for complex domains. Incorporated in Andhra Pradesh. DPIIT recognised deep tech startup.</p>
+        <div class="footer-entity">
+          CIN: U62013AP2026PTC127340<br>
+          PAN: AANCT4407C · TAN: VPNT05013B<br>
+          Andhra Pradesh
+        </div>
+        <div class="footer-dpiit">
+          <div class="footer-dpiit-label">DPIIT Recognition</div>
+          <div class="footer-dpiit-val">DIPP275667 · Valid to 29 Jul 2036</div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-links">
+          <li><a href="#research">Research Focus</a></li>
+          <li><a href="#ip">IP &amp; Innovation</a></li>
+          <li><a href="#projectiq">ProjectIQ EOS</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About TRL</a></li>
+          <li><a href="#grants">Grants &amp; Partnerships</a></li>
+          <li><a href="mailto:admin@tekthinkresearchlabs.in">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><span>admin@tekthinkresearchlabs.in</span></li>
+          <li><span>Andhra Pradesh</span></li>
+          <li><a href="mailto:admin@tekthinkresearchlabs.in?subject=Research Briefing Request">Request Briefing</a></li>
+          <li><a href="mailto:admin@tekthinkresearchlabs.in?subject=NDA Request">Request NDA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 TekThink Research Labs Private Limited. All Rights Reserved.</div>
+      <div class="footer-ip">ProjectIQ EOS, iQube™, and the iQube Decision Intelligence Framework are proprietary IP of TekThink Research Labs Private Limited. Patent pending. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  window.addEventListener('scroll',()=>{document.getElementById('tt02-nav').classList.toggle('scrolled',window.scrollY>20);});
+  function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
+  function closeMenu(){document.getElementById('mobile-menu').classList.remove('open');}
+</script>
+</body>
+</html>
