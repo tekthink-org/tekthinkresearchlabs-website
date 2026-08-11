@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Briefing — TekThink Research Labs</title>
+  <meta name="description" content="Request a research briefing or partnership discussion with TekThink Research Labs Pvt Ltd — DPIIT-recognised deep tech company, Andhra Pradesh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --indigo:#2D1B69; --indigo-dark:#1A0F3E; --indigo-mid:#4C3A9E; --indigo-light:#EEF0FF;
+      --emerald:#059669; --emerald-dark:#065F46; --emerald-light:#D1FAE5;
+      --slate:#334155; --slate-light:#F1F5F9; --slate-mid:#64748B;
+      --blue:#3B82F6; --blue-light:#EFF6FF;
+      --white:#FFFFFF; --off-white:#F0F4FF;
+      --text-1:#0F172A; --text-2:#475569; --text-3:#94A3B8;
+      --border:#CBD5E1; --border-soft:#E2E8F0;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Source Serif 4',Georgia,serif; background:var(--white); color:var(--text-1); -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; flex-direction:column; }
+    .sans { font-family:'Inter',sans-serif; }
+    .mono { font-family:'JetBrains Mono',monospace; }
+
+    /* NAV */
+    nav { height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border-soft); position:sticky; top:0; z-index:100; }
+    .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:44px; width:auto; display:block; }
+    .nav-brand-text { display:flex; flex-direction:column; }
+    .nav-brand-name { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:var(--indigo); line-height:1.2; }
+    .nav-brand-sub { font-family:'JetBrains Mono',monospace; font-size:9px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--emerald); }
+    .nav-back { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; color:var(--text-2); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color 0.2s; }
+    .nav-back:hover { color:var(--indigo); }
+
+    /* MAIN */
+    main { flex:1; padding:56px 5vw 72px; }
+    .container { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:3.5rem; align-items:start; }
+
+    .form-eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--emerald); margin-bottom:1rem; }
+    .form-eyebrow::before { content:''; width:20px; height:1.5px; background:var(--emerald); }
+    .form-title { font-family:'Inter',sans-serif; font-size:clamp(1.8rem,3vw,2.4rem); font-weight:800; line-height:1.12; letter-spacing:-0.02em; color:var(--text-1); margin-bottom:0.875rem; }
+    .form-sub { font-size:1rem; line-height:1.7; color:var(--text-2); font-weight:300; margin-bottom:2rem; }
+
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.125rem; }
+    .field { display:flex; flex-direction:column; }
+    .field.full { grid-column:1 / -1; }
+    .field label { font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600; color:var(--text-1); margin-bottom:0.4rem; }
+    .field label .req { color:var(--emerald); }
+    .field input, .field select, .field textarea {
+      font-family:'Inter',sans-serif; font-size:14px; color:var(--text-1);
+      background:var(--white); border:1.5px solid var(--border); border-radius:8px;
+      padding:11px 13px; transition:border-color 0.2s, box-shadow 0.2s; width:100%;
+    }
+    .field input::placeholder, .field textarea::placeholder { color:var(--text-3); }
+    .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--indigo-mid); box-shadow:0 0 0 3px rgba(76,58,158,0.1); }
+    .field textarea { resize:vertical; min-height:120px; line-height:1.6; }
+    .field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23475569' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; cursor:pointer; }
+
+    .submit-btn { font-family:'Inter',sans-serif; font-size:14px; font-weight:600; padding:13px 30px; background:var(--indigo); color:var(--white); border:none; border-radius:8px; cursor:pointer; transition:background 0.2s, transform 0.18s, box-shadow 0.2s; display:inline-flex; align-items:center; gap:8px; }
+    .submit-btn:hover { background:var(--indigo-dark); transform:translateY(-1px); box-shadow:0 6px 20px rgba(45,27,105,0.3); }
+    .form-note { font-family:'Inter',sans-serif; font-size:12px; color:var(--text-3); margin-top:1rem; line-height:1.6; }
+
+    /* SIDEBAR */
+    .sidebar { display:flex; flex-direction:column; gap:1rem; }
+    .side-card { background:var(--indigo-dark); border-radius:12px; padding:1.75rem; }
+    .side-card-title { font-family:'Inter',sans-serif; font-size:15px; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
+    .side-card-body { font-size:13.5px; color:rgba(255,255,255,0.6); line-height:1.7; font-family:'Source Serif 4',serif; }
+    .side-contact { background:var(--off-white); border:1px solid var(--border-soft); border-radius:12px; padding:1.5rem; }
+    .side-contact-row { display:flex; gap:12px; align-items:flex-start; padding:0.75rem 0; border-bottom:1px solid var(--border-soft); }
+    .side-contact-row:last-child { border-bottom:none; }
+    .scr-icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+    .scr-label { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:2px; }
+    .scr-val { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; color:var(--text-1); word-break:break-word; }
+    .side-cred { background:var(--slate-light); border-radius:12px; padding:1.25rem 1.5rem; }
+    .side-cred-title { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate-mid); margin-bottom:0.75rem; }
+    .side-cred-row { display:flex; justify-content:space-between; gap:1rem; padding:0.3rem 0; font-family:'Inter',sans-serif; font-size:12px; }
+    .side-cred-row .k { color:var(--text-3); }
+    .side-cred-row .v { color:var(--text-1); font-weight:500; text-align:right; }
+
+    /* SUCCESS */
+    .success-box { display:none; background:var(--emerald-light); border:1px solid rgba(5,150,105,0.3); border-radius:12px; padding:2rem; text-align:center; }
+    .success-box.show { display:block; }
+    .success-icon { width:52px; height:52px; border-radius:50%; background:var(--emerald); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 1rem; }
+    .success-title { font-family:'Inter',sans-serif; font-size:1.2rem; font-weight:700; color:var(--emerald-dark); margin-bottom:0.5rem; }
+    .success-body { font-size:14px; color:var(--emerald-dark); line-height:1.7; opacity:0.85; }
+
+    /* FOOTER */
+    footer { background:#0F172A; padding:32px 0; }
+    .footer-inner { max-width:1000px; margin:0 auto; padding:0 5vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); }
+    .footer-links { display:flex; gap:1.5rem; }
+    .footer-links a { font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--emerald); }
+
+    @media (max-width:820px) {
+      .container { grid-template-columns:1fr; gap:2.5rem; }
+      .sidebar { order:-1; }
+    }
+    @media (max-width:500px) {
+      .form-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="data:image/jpeg;base64,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" alt="TekThink Research Labs" class="nav-logo-img" />
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">TekThink Research Labs</span>
+      <span class="nav-brand-sub">Intelligence · Insight · Innovation</span>
+    </div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="form-col">
+      <div class="form-eyebrow">Request a Briefing</div>
+      <h1 class="form-title">Engage with our research.</h1>
+      <p class="form-sub">Whether you represent a grant body, an institutional investor, a research partner, or an enterprise exploring our platforms — tell us a little about your interest and we'll respond within one business day. All enquiries are confidential.</p>
+
+      <form id="briefing-form" action="https://formspree.io/f/xyegweyo" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label class="sans">Full Name <span class="req">*</span></label>
+            <input type="text" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="field">
+            <label class="sans">Organisation</label>
+            <input type="text" name="organisation" placeholder="Company / Institution / Body" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="sans">Email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="field">
+            <label class="sans">Phone</label>
+            <input type="tel" name="phone" placeholder="+91 00000 00000" />
+          </div>
+        </div>
+        <div class="field full" style="margin-bottom:1.125rem;">
+          <label class="sans">I'm reaching out as <span class="req">*</span></label>
+          <select name="enquiry_type" required>
+            <option value="" disabled selected>Select the closest fit</option>
+            <option value="Grant / Funding Body">Grant / Funding Body</option>
+            <option value="Institutional Investor">Institutional Investor</option>
+            <option value="Research / Academic Partner">Research / Academic Partner</option>
+            <option value="Enterprise / Prospective Client">Enterprise / Prospective Client</option>
+            <option value="ProjectIQ EOS Enquiry">ProjectIQ EOS Enquiry</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field full" style="margin-bottom:1.125rem;">
+          <label class="sans">How can we help? <span class="req">*</span></label>
+          <textarea name="message" placeholder="Tell us briefly about your interest or the nature of the engagement you're considering." required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New Briefing Request — TekThink Research Labs" />
+        <input type="text" name="_gotcha" style="display:none" />
+        <button type="submit" class="submit-btn">Send Request →</button>
+        <p class="form-note">We'll reply from admin@tekthinkresearchlabs.in. Your details are used only to respond to this enquiry.</p>
+      </form>
+
+      <div class="success-box" id="success-box">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Request received.</div>
+        <div class="success-body">Thank you for reaching out to TekThink Research Labs. We've received your briefing request and will respond within one business day.</div>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <div class="side-card-title">What to expect</div>
+        <div class="side-card-body">A considered response from our team, not an automated sales sequence. For deeper technical engagement, we work under NDA — tiered disclosure protects the research IP at every stage.</div>
+      </div>
+      <div class="side-contact">
+        <div class="side-contact-row">
+          <span class="scr-icon">✉️</span>
+          <div><div class="scr-label">Email</div><div class="scr-val">admin@tekthinkresearchlabs.in</div></div>
+        </div>
+        <div class="side-contact-row">
+          <span class="scr-icon">📍</span>
+          <div><div class="scr-label">Registered Office</div><div class="scr-val">Andhra Pradesh, India</div></div>
+        </div>
+        <div class="side-contact-row">
+          <span class="scr-icon">🔬</span>
+          <div><div class="scr-label">Focus</div><div class="scr-val">AI Research &amp; Platform Development</div></div>
+        </div>
+      </div>
+      <div class="side-cred">
+        <div class="side-cred-title">Entity Credentials</div>
+        <div class="side-cred-row"><span class="k">DPIIT</span><span class="v">DIPP275667</span></div>
+        <div class="side-cred-row"><span class="k">CIN</span><span class="v">U62013AP2026PTC127340</span></div>
+        <div class="side-cred-row"><span class="k">Incorporated</span><span class="v">30 Jul 2026</span></div>
+        <div class="side-cred-row"><span class="k">Valid Until</span><span class="v">29 Jul 2036</span></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 TekThink Research Labs Private Limited. All Rights Reserved.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#projectiq">ProjectIQ EOS</a>
+      <a href="index.html#grants">Grants</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('briefing-form');
+  const successBox = document.getElementById('success-box');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        successBox.classList.add('show');
+        successBox.scrollIntoView({ behavior:'smooth', block:'center' });
+      } else {
+        alert('Something went wrong. Please email admin@tekthinkresearchlabs.in directly.');
+      }
+    } catch(err) {
+      alert('Network error. Please email admin@tekthinkresearchlabs.in directly.');
+    }
+  });
+</script>
+</body>
+</html>
